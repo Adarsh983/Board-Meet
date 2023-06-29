@@ -123,7 +123,7 @@
     const intervalID = setInterval(update , 1);
 
     canvas.addEventListener("touchstart" , startDraw, false);
-    window.addEventListener("mousedown" , startDraw);
+    canvas.addEventListener("mousedown" , startDraw);
     canvas.addEventListener("mouseup" , endDraw);
     canvas.addEventListener("touchend" , endDraw , false);
     window.addEventListener("mousemove" , draw);
