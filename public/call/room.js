@@ -118,3 +118,8 @@ function sendMessage(event){
         chatMessage.value = '';
     }
 }
+
+function leaveMeeting(){
+    socket.emit('disconnect');
+    return true;
+}

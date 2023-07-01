@@ -102,6 +102,7 @@ app.get('*' , (req , res)=> {
 });
 
 io.on('connect', socket => {
+    // Video call
     socket.on('join-room', (roomId, userId, userName) => {
         socket.join(roomId);
         const id = roomSet.get(roomId)[1];
@@ -111,7 +112,6 @@ io.on('connect', socket => {
         socket.on('message', (username, message) => {
             socket.to(roomId).emit('message', username, message);
         });
-        
         socket.on('disconnect', () => {
             socket.broadcast.to(roomId).emit('user-disconnected', userId);
             roomSet.set(roomId , [roomSet.get(roomId)[0] - 1 , null]);
@@ -121,6 +121,11 @@ io.on('connect', socket => {
             }
         });
     });
+    socket.on('username-sent', (socketId, userId, userName) => {
+        socket.broadcast.to(socketId).emit('username-received', userId, userName);
+    });
+
+    // Whiteboard
     socket.on('join-board' , (roomId , name) => {
         socket.join(roomId);
         const id = boardroomSet.get(roomId)[2];
@@ -131,11 +136,9 @@ io.on('connect', socket => {
             boardroomSet.set(roomId , [boardroomSet.get(roomId)[0] , boardroomSet.get(roomId)[1]]);
             socket.broadcast.to(roomId).emit('ondraw' , {startX : data.startX , startY : data.startY, x : data.x ,y : data.y, width: data.width , color: data.color});
         });
-
         socket.on("clearscreen" , ()=> {
             socket.broadcast.to(roomId).emit('clear');
         });
-
         socket.on('disconnect', () => {
             boardroomSet.set(roomId , [boardroomSet.get(roomId)[0] - 1 , boardroomSet.get(roomId)[1] , null]);
             if (boardroomSet.get(roomId)[0] <= 0){
@@ -144,9 +147,6 @@ io.on('connect', socket => {
             }
         });
 
-    });
-    socket.on('username-sent', (socketId, userId, userName) => {
-        socket.broadcast.to(socketId).emit('username-received', userId, userName);
     });
 });
 
