@@ -16,12 +16,13 @@ Check out the deployed site at [https://boardmeet.onrender.com](https://boardmee
 
 ### Tech Stack
 - Frontend : EJS
-- Backend : NodeJS, ExpressJS
+- Backend : NodeJS, ExpressJS, Socket.io
 - Database : MonngoDB
-- WebRTC : Socket.io, PeerJS
+- WebRTC : PeerJS
 
 ## Contributors
 
 - Adarsh Mani G
 - Balaji S
 - Dhushyanthan K
+- Rishibalaji Srinivasan
