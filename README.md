@@ -17,7 +17,7 @@ Check out the deployed site at [https://boardmeet.onrender.com](https://boardmee
 ### Tech Stack
 - Frontend : EJS
 - Backend : NodeJS, ExpressJS, Socket.io
-- Database : MonngoDB
+- Database : MongoDB
 - WebRTC : PeerJS
 
 ## Contributors
