@@ -21,9 +21,6 @@ Check out the deployed site at [https://boardmeet.onrender.com](https://boardmee
 - WebRTC : PeerJS
 
 ## Contributors
-
-- Adarsh Mani G
-- Balaji S
+- G Adarsh Mani
 - Dhushyanthan K
-- Rishibalaji Srinivasan
 - Akshath Krishna R
